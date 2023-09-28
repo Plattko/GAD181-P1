@@ -42,3 +42,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: CountDown
+    uniqueID: 2737080099
+    locked: 0
