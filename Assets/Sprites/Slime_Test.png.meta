@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cbbbd5c91f9f23342a93a6b94b865213
+guid: e5b0f17d001d484499464a782f644ae5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Saw(animated)_0
+      name: Slime_Test_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 64
-        height: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe14ad28c6a354e4c9c2c6918b8058fc
-      internalID: -2093267925
+      spriteID: cd888304e13f20f42ac44ceae3477d41
+      internalID: 1294759222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Saw(animated)_1
+      name: Slime_Test_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a41a530514074a24caacdf407f2b6d50
+      internalID: 544479608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime_Test_2
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
-        width: 64
-        height: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 927297080d2f19d4a8d2161534a520c3
-      internalID: -2110806068
+      spriteID: 45baae4d876def24799b40f759cc152d
+      internalID: -159755830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Saw(animated)_2
+      name: Slime_Test_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f51e80864ab583d4aa0f0e90118d5575
-      internalID: -180496452
+      spriteID: a75634497feec2a42aae2c0c07a3a91d
+      internalID: -248955081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Saw(animated)_3
+      name: Slime_Test_4
       rect:
         serializedVersion: 2
-        x: 64
+        x: 32
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +208,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f31e833f26402a441935e81c7bfa2dd6
-      internalID: 1060308395
+      spriteID: e62dac73ad436d1479cf1d83a2be83c4
+      internalID: 825254501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime_Test_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f96714383e592024f934458d4bb8d195
+      internalID: 194692695
       vertices: []
       indices: 
       edges: []
@@ -204,10 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Saw(animated)_0: -2093267925
-      Saw(animated)_1: -2110806068
-      Saw(animated)_2: -180496452
-      Saw(animated)_3: 1060308395
+      Slime_Test_0: 1294759222
+      Slime_Test_1: 544479608
+      Slime_Test_2: -159755830
+      Slime_Test_3: -248955081
+      Slime_Test_4: 825254501
+      Slime_Test_5: 194692695
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
