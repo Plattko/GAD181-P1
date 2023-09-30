@@ -1,0 +1,58 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerFriction : MonoBehaviour
+{
+    // Reference to the player's Rigidbody2D
+    public Rigidbody2D rb;
+
+    // Whether the player is touching a surface
+    public bool onSurface = false;
+
+    public float noFriction = 1f;
+    // The collided surface's friction
+    public float surfaceFriction = 0.95f;
+
+    private void FixedUpdate()
+    {
+        // If the player is sliding along a surface, slowly reduce their speed based on the surface type
+        if (onSurface)
+        {
+            // Get the surface friction from the surface [[CURRENTLY PLACEHOLDER]]
+            surfaceFriction = 0.9f;
+
+            // Multiple the player's velocity by the surface's 'friction'
+            rb.velocity = rb.velocity * surfaceFriction;
+
+        }
+        else
+        {
+            surfaceFriction = noFriction;
+        }
+    }
+
+    // If the player collides with a surface, set onSurface to true and reduce their velocity based on the surface's friction
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Surface"))
+        {
+            Debug.Log(rb.velocity);
+
+            // Set onSurface to true
+            onSurface = true;
+        }
+    }
+
+    // If the player is no longer on a surface, set onSurface to false
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Surface"))
+        {
+            Debug.Log("Player is not on a surface");
+
+            // Set onSurface to false
+            onSurface = false;
+        }
+    }
+}

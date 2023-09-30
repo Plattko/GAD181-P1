@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Killbox
-  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -13,7 +12,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Grapplable
+  - 
   - 
   - 
   - 
@@ -42,10 +41,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Obstacle
-    uniqueID: 2581697327
-    locked: 0
-  - name: CountDown
-    uniqueID: 2737080099
     locked: 0
