@@ -9,7 +9,7 @@ public class CountDown : MonoBehaviour
     // Length of the countdown timer
     public float countdownDuration = 3.0f;
     // Whether the countdown is complete
-    private bool countDownComplete = false;
+    public bool countDownComplete = false;
 
     // Reference to the countdown text
     public TextMeshProUGUI countdownText;
