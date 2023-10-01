@@ -55,7 +55,6 @@ public class Tutorial_GrapplingGun : MonoBehaviour
     {
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
-
     }
 
 
@@ -209,6 +208,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
         }
     }
 
+    // Show the maximum distance of the grappling hook as a green circle in the inspector
     private void OnDrawGizmosSelected()
     {
         if (firePoint != null && hasMaxDistance)

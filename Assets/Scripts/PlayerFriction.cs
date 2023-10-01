@@ -14,10 +14,19 @@ public class PlayerFriction : MonoBehaviour
     // The collided surface's friction
     public float surfaceFriction = 0.95f;
 
+    // Reference to the player's SpringJoint2D
+    private SpringJoint2D spring;
+
+    private void Start()
+    {
+        // Get the player's SpringJoint2D
+        spring = GetComponent<SpringJoint2D>();
+    }
+
     private void FixedUpdate()
     {
-        // If the player is sliding along a surface, slowly reduce their speed based on the surface type
-        if (onSurface)
+        // If the player is sliding along a surface and not grappling, slowly reduce their speed based on the surface type
+        if (onSurface && !spring.enabled)
         {
             // Get the surface friction from the surface [[CURRENTLY PLACEHOLDER]]
             surfaceFriction = 0.9f;

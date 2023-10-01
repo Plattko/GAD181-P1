@@ -23,6 +23,7 @@ public class Tutorial_GrapplingRope : MonoBehaviour
 
     float moveTime = 0;
 
+    // Whether the player is grappling
     [HideInInspector] public bool isGrappling = true;
 
     bool straightLine = true;
