@@ -13,6 +13,13 @@ public class PlayerLife : MonoBehaviour
     public float deathDelay = 2f;
     // Reference to the game over UI
     public GameObject playerDeathUI;
+    //Reference to AudioManager
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +55,9 @@ public class PlayerLife : MonoBehaviour
     void PlayerDeath()
     {
         Debug.Log("Player has died");
+
+        //Play death sound effect
+        audioManager.PlaySFX(audioManager.death);
 
         // Get the player's RigidBody2D component
         //Rigidbody2D rb = GetComponent<Rigidbody2D>();
