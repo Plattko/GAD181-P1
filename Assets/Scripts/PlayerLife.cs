@@ -52,6 +52,14 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Killbox"))
+        {
+            // Call the PlayerDeath method
+            PlayerDeath();
+        }
+    }
     void PlayerDeath()
     {
         Debug.Log("Player has died");
