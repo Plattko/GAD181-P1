@@ -62,11 +62,6 @@ public class GameController : MonoBehaviour
         gamePlaying = true;
     }
 
-    //private void GamePaused()
-    //{
-    //    gamePlaying = false;
-    //}
-
     public void LevelComplete()
     {
         gamePlaying = false;
