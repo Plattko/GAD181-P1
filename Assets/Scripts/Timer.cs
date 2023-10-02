@@ -13,23 +13,8 @@ public class Timer : MonoBehaviour
     
     // Reference to the timer text
     public TextMeshProUGUI timerText;
-    // Reference to the level win UI
-    public GameObject levelWinUI;
-
-    // Reference to current scene
-    private Scene currentScene;
-    // String to store name of current scene
-    private string sceneName;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Get the player's current scene
-        currentScene = SceneManager.GetActiveScene();
-        // Get the scene name
-        sceneName = currentScene.name;
-    }
+    // Reference to the Game Controller script
+    public GameController gameController;
 
     // Update is called once per frame
     void Update()
@@ -39,14 +24,6 @@ public class Timer : MonoBehaviour
         {
             Countdown();
             timerText.text = levelTimer.ToString("0.0");
-        }
-
-        if (levelWinUI.activeSelf && Input.GetKeyDown(KeyCode.R))
-        {
-            // Unpause the game by setting the time scale to 1
-            Time.timeScale = 1f;
-            // Load the current scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -69,10 +46,8 @@ public class Timer : MonoBehaviour
             // Set the colour of the timer text to green
             timerText.color = Color.green;
 
-            // Pause the game by setting time scale to 0
-            Time.timeScale = 0f;
-            // Activate the level win UI
-            levelWinUI.SetActive(true);
+            // Call the LevelComplete method from the Game Controller script
+            gameController.LevelComplete();
         }
     }
 }

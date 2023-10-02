@@ -6,6 +6,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
 {
     [Header("Scripts Ref:")]
     public Tutorial_GrapplingRope grappleRope;
+    public GameController gameController;
 
     [Header("Layers Settings:")]
     [SerializeField] private bool grappleToAll = false;
@@ -60,54 +61,57 @@ public class Tutorial_GrapplingGun : MonoBehaviour
 
     private void Update()
     {
-        // If the left mouse button is pressed, call the SetGrapplePoint method
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (gameController.gamePlaying)
         {
-            SetGrapplePoint();
-        }
-        // If the left mouse button is held, do the following
-        else if (Input.GetKey(KeyCode.Mouse0))
-        {
-            // If the GrappleRope script is enabled, rotate the grappling gun to follow the grapple point immediately (instead of rotate over time)
-            if (grappleRope.enabled)
+            // If the left mouse button is pressed, call the SetGrapplePoint method
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                RotateGun(grapplePoint, false);
+                SetGrapplePoint();
             }
+            // If the left mouse button is held, do the following
+            else if (Input.GetKey(KeyCode.Mouse0))
+            {
+                // If the GrappleRope script is enabled, rotate the grappling gun to follow the grapple point immediately (instead of rotate over time)
+                if (grappleRope.enabled)
+                {
+                    RotateGun(grapplePoint, false);
+                }
+                else
+                {
+                    Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+                    RotateGun(mousePos, true);
+                }
+
+                // MAY REMOVE
+                if (launchToPoint && grappleRope.isGrappling)
+                {
+                    // Launch calculation for transform launch
+                    if (launchType == LaunchType.Transform_Launch)
+                    {
+                        Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
+                        Vector2 targetPos = grapplePoint - firePointDistnace;
+                        gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
+                    }
+                }
+            }
+            // If the left mouse button is released, disable the GrappleRope script and the player's SpringJoint2D
+            else if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                grappleRope.enabled = false;
+                m_springJoint2D.enabled = false;
+
+                // If it is a transform launch, set the player's gravity scale back to 1
+                if (launchType == LaunchType.Transform_Launch)
+                {
+                    m_rigidbody.gravityScale = 1;
+                }
+            }
+            // If the player is not pressing anything, rotate the grappling gun towards the mouse's position
             else
             {
                 Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
                 RotateGun(mousePos, true);
             }
-
-            // MAY REMOVE
-            if (launchToPoint && grappleRope.isGrappling)
-            {
-                // Launch calculation for transform launch
-                if (launchType == LaunchType.Transform_Launch)
-                {
-                    Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
-                    Vector2 targetPos = grapplePoint - firePointDistnace;
-                    gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
-                }
-            }
-        }
-        // If the left mouse button is released, disable the GrappleRope script and the player's SpringJoint2D
-        else if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            grappleRope.enabled = false;
-            m_springJoint2D.enabled = false;
-
-            // If it is a transform launch, set the player's gravity scale back to 1
-            if (launchType == LaunchType.Transform_Launch)
-            {
-                m_rigidbody.gravityScale = 1;
-            }
-        }
-        // If the player is not pressing anything, rotate the grappling gun towards the mouse's position
-        else
-        {
-            Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-            RotateGun(mousePos, true);
         }
     }
 

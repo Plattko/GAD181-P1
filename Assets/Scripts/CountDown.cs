@@ -4,59 +4,40 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class CountDown : MonoBehaviour
+public class Countdown : MonoBehaviour
 {
     // Length of the countdown timer
-    public float countdownDuration = 3.0f;
-    // Whether the countdown is complete
-    public bool countDownComplete = false;
+    public int countdownTime = 3;
 
+    // Reference to the countdown UI
+    public GameObject countdownUI;
     // Reference to the countdown text
     public TextMeshProUGUI countdownText;
+    // Reference to the Game Controller script
+    public GameController gameController;
 
     private void Start()
     {
-        // Display the countdown text as the countdown duration to 1 integer
-        countdownText.text = countdownDuration.ToString("0");
-        // Begin repeating the UpdateCountdown method once every second after 1 second
-        InvokeRepeating("UpdateCountdown", 1.0f, 1.0f);
+        StartCoroutine(CountdownToStart());
     }
 
-    private void UpdateCountdown()
+    private IEnumerator CountdownToStart()
     {
-        // Reduce countdownDuration by 1
-        countdownDuration--;
-
-        // If the countdown reaches 0, do the following
-        if (countdownDuration <= 0)
+        while (countdownTime > 0)
         {
-            // Set the countdown duration to 0
-            countdownDuration = 0;
-            // Set countDownComplete to true
-            countDownComplete = true;
-            // Stop repeating the UpdateCountdown method every second
-            CancelInvoke("UpdateCountdown");
+            countdownText.text = countdownTime.ToString();
 
-            // Call the DisplayGoMessage coroutine
-            StartCoroutine(DisplayGoMessage());
+            yield return new WaitForSecondsRealtime(1f);
+
+            countdownTime--;
         }
-        // If the countdown is still running, update the countdown text
-        else
-        {
-            countdownText.text = countdownDuration.ToString("0");
 
-        }
-    }
+        countdownText.text = "GO!";
 
-    // Display the go text and then make it disappear after 1 second
-    private IEnumerator DisplayGoMessage()
-    {
-        // Set the countdown text to "Go!"
-        countdownText.text = "Go!";
-        // Wait for 1 second
-        yield return new WaitForSeconds(1.0f); 
-        // Set the countdown text to nothing
-        countdownText.text = ""; 
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        countdownUI.SetActive(false);
+        gameController.BeginGame();
     }
 }
 
