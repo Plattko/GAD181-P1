@@ -63,6 +63,11 @@ public class GameController : MonoBehaviour
         gamePlaying = true;
     }
 
+    //public void PlayerDeath()
+    //{
+    //    gamePlaying = false;
+    //}
+
     public void LevelComplete()
     {
         gamePlaying = false;
