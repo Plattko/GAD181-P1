@@ -13,6 +13,8 @@ public class CountDown : MonoBehaviour
 
     // Reference to the countdown text
     public TextMeshProUGUI countdownText;
+    // Reference to the Game Controller script
+    public GameController gameController;
 
     private void Start()
     {
@@ -56,7 +58,10 @@ public class CountDown : MonoBehaviour
         // Wait for 1 second
         yield return new WaitForSeconds(1.0f); 
         // Set the countdown text to nothing
-        countdownText.text = ""; 
+        countdownText.text = "";
+
+        // Call the BeginGame method from the Game Controller script
+        gameController.BeginGame();
     }
 }
 

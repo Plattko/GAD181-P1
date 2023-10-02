@@ -57,8 +57,9 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void BeginGame()
+    public void BeginGame()
     {
+        Debug.Log("Called BeginGame method");
         gamePlaying = true;
     }
 
