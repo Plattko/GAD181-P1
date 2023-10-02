@@ -36,10 +36,5 @@ public class AudioManager : MonoBehaviour
     {
         SFXSource.PlayOneShot(clip);
     }
-
-    void OpenSettings()
-    {
-            audioSettingsUI.SetActive(true);
-    }
 }
 
