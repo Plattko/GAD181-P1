@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grappleRope: {fileID: 5978437460790192584}
+  gameController: {fileID: 0}
   grappleToAll: 0
   grappableLayerNumber: 6
   m_camera: {fileID: 0}
@@ -383,9 +384,10 @@ GameObject:
   - component: {fileID: 5565153661271769832}
   - component: {fileID: 7789120446080145049}
   - component: {fileID: 7891014700996641325}
+  - component: {fileID: 2152802430478262627}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -519,7 +521,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e03580f1dc1ab0c409c0bd018ef93d64, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -565,6 +567,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathDelay: 2
   playerDeathUI: {fileID: 0}
+  gameController: {fileID: 0}
+--- !u!114 &2152802430478262627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5008632692207148914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a45a55228a3243d42a4855b2ad4e3534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 5565153661271769832}
+  onSurface: 0
+  noFriction: 0
+  surfaceFriction: 1
 --- !u!1 &7193823870386950370
 GameObject:
   m_ObjectHideFlags: 0

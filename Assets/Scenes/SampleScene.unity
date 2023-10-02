@@ -569,6 +569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d8a2f700f0d914eb512b105c81b622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameIsPausable: 0
   pauseMenuUI: {fileID: 1339807373}
   levelWinUI: {fileID: 466119673}
 --- !u!4 &465518921
@@ -1286,8 +1287,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2074509627}
   - {fileID: 823456579}
+  - {fileID: 2074509627}
   - {fileID: 1339807374}
   - {fileID: 962734545}
   - {fileID: 466119674}
@@ -2021,7 +2022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 316068553269553485, guid: 2c42b3b8a838e614c9a9c48882ced264, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3686079945404110229, guid: 2c42b3b8a838e614c9a9c48882ced264, type: 3}
       propertyPath: target
@@ -2147,7 +2148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7891014700996641325, guid: 2ed744cfcb6519d46b02bcb2880f04e8, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7891014700996641325, guid: 2ed744cfcb6519d46b02bcb2880f04e8, type: 3}
       propertyPath: playerDeathUI

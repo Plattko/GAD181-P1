@@ -13,24 +13,24 @@ public class AudioManager : MonoBehaviour
     public AudioClip death;
     public AudioClip wallCollide;
 
-    public GameObject audioSettingsUI;
-    private bool settingsOpen = false;
+    //public GameObject audioSettingsUI;
+    //private bool settingsOpen = false;
 
     private void Start()
     {
         musicSource.clip = background;
         musicSource.Play();
-        audioSettingsUI.SetActive(false);
+        //audioSettingsUI.SetActive(false);
     }
 
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            settingsOpen = !settingsOpen;
-            audioSettingsUI.SetActive(settingsOpen);
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    settingsOpen = !settingsOpen;
+        //    audioSettingsUI.SetActive(settingsOpen);
+        //}
     }
     public void PlaySFX(AudioClip clip)
     {
