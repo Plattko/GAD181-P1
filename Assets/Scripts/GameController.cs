@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
 {
     // Whether the game is playing, only able to be changed in this script
     public bool gamePlaying { get; private set; }
+    // Whether the game can be paused
+    public bool gameIsPausable = false;
     // Whether the pause menu is active
     private bool gamePaused = false;
 
@@ -18,6 +20,9 @@ public class GameController : MonoBehaviour
     private Scene currentScene;
     // String to store name of current scene
     private string sceneName;
+
+    //[SerializeField] private List<GameObject> uiMenus = new List<GameObject>();
+    //private GameObject lastMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +47,22 @@ public class GameController : MonoBehaviour
             Time.timeScale = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        //if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenuUI.gameObject.activeInHierarchy)
+        //{
+        //    for (int i = 0; i < uiMenus.Count; i++)
+        //    {
+        //        uiMenus[i].gameObject.SetActive(false);
+        //    }
+
+        //    pauseMenuUI.SetActive(true);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Escape) && pauseMenuUI.gameObject.activeInHierarchy)
+        //{
+        //    pauseMenuUI.SetActive(false);
+        //    lastMenu.SetActive(true);
+        //}
+
+        if (Input.GetKeyDown(KeyCode.Escape) && gameIsPausable)
         {
             PauseMenu();
         }
@@ -58,6 +78,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Called BeginGame method");
         gamePlaying = true;
+        gameIsPausable = true;
     }
 
     public void PauseMenu()
@@ -67,14 +88,16 @@ public class GameController : MonoBehaviour
         gamePlaying = !gamePaused;
     }
 
-    //public void PlayerDeath()
-    //{
-    //    gamePlaying = false;
-    //}
+    public void PlayerDeath()
+    {
+        gamePlaying = false;
+        gameIsPausable = false;
+    }
 
     public void LevelComplete()
     {
         gamePlaying = false;
+        gameIsPausable = false;
         levelWinUI.SetActive(true);
     }
 }
