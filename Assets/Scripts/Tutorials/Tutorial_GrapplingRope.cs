@@ -23,6 +23,7 @@ public class Tutorial_GrapplingRope : MonoBehaviour
 
     float moveTime = 0;
 
+    // Whether the player is grappling
     [HideInInspector] public bool isGrappling = true;
 
     bool straightLine = true;
@@ -91,8 +92,9 @@ public class Tutorial_GrapplingRope : MonoBehaviour
             // Activate the grappling once the grappling rope reaches its destination
             if (!isGrappling)
             {
-                // Call the Grapple method from the grapplingGun script
+                // Call the Grapple method from the Grappling Gun script
                 grapplingGun.Grapple();
+                
                 // Set isGrappling to true
                 isGrappling = true;
             }
