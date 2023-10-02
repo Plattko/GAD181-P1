@@ -27,8 +27,7 @@ public class GameController : MonoBehaviour
         // Get the scene name
         sceneName = currentScene.name;
 
-        //gamePlaying = false;
-        gamePlaying = true;
+        gamePlaying = false;
     }
 
     // Update is called once per frame
@@ -45,9 +44,7 @@ public class GameController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            gamePaused = !gamePaused;
-            pauseMenuUI.SetActive(gamePaused);
-            gamePlaying = !gamePaused;
+            PauseMenu();
         }
 
         if (levelWinUI.activeSelf && Input.GetKeyDown(KeyCode.R))
@@ -61,6 +58,13 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Called BeginGame method");
         gamePlaying = true;
+    }
+
+    public void PauseMenu()
+    {
+        gamePaused = !gamePaused;
+        pauseMenuUI.SetActive(gamePaused);
+        gamePlaying = !gamePaused;
     }
 
     //public void PlayerDeath()
