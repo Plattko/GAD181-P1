@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 66761663}
-  levelWinUI: {fileID: 466119673}
+  gameController: {fileID: 465518920}
 --- !u!4 &1933025
 Transform:
   m_ObjectHideFlags: 0
@@ -600,7 +600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &465518920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,8 +613,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d8a2f700f0d914eb512b105c81b622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelWinUI: {fileID: 0}
-  pauseMenuUI: {fileID: 0}
+  pauseMenuUI: {fileID: 1339807373}
+  levelWinUI: {fileID: 466119673}
 --- !u!4 &465518921
 Transform:
   m_ObjectHideFlags: 0
@@ -2076,6 +2076,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7891014700996641325, guid: 2ed744cfcb6519d46b02bcb2880f04e8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7891014700996641325, guid: 2ed744cfcb6519d46b02bcb2880f04e8, type: 3}
       propertyPath: playerDeathUI
       value: 
       objectReference: {fileID: 962734544}
@@ -2149,8 +2153,8 @@ SceneRoots:
   - {fileID: 6770931233429690158}
   - {fileID: 1845434229}
   - {fileID: 4868479171446587588}
-  - {fileID: 1933025}
   - {fileID: 6811955099293065826}
   - {fileID: 1403613046}
   - {fileID: 1295128165}
   - {fileID: 465518921}
+  - {fileID: 1933025}
