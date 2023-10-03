@@ -1528,6 +1528,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 2618290988619615141, guid: 90decaf5a05e5594fbc340c61a6907cf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3717283866360179941, guid: 90decaf5a05e5594fbc340c61a6907cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
