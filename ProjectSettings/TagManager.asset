@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Surface
   - Audio
+  - Cobweb
   layers:
   - Default
   - TransparentFX
