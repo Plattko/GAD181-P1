@@ -49,11 +49,21 @@ public class CameraShake : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             ShakeCamera();
         }
-    }
+          if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+
+            if (timer <= 0)
+            {
+                StopShake();
+            }
+        }
+
+    }*/
 }

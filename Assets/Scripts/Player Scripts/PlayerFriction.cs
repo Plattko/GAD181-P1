@@ -46,10 +46,11 @@ public class PlayerFriction : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Surface"))
         {
-            Debug.Log(rb.velocity);
-
             // Set onSurface to true
             onSurface = true;
+
+            FindAnyObjectByType<CameraShake>().ShakeCamera();
+            Debug.Log(rb.velocity);
         }
     }
 
