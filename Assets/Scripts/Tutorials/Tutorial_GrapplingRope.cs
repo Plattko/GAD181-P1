@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tutorial_GrapplingRope : MonoBehaviour
 {
     [Header("General Refernces:")]
-    public Tutorial_GrapplingGun grapplingGun;
+    public GrapplingHook grapplingGun;
     public LineRenderer m_lineRenderer;
 
     [Header("General Settings:")]
@@ -93,7 +93,7 @@ public class Tutorial_GrapplingRope : MonoBehaviour
             if (!isGrappling)
             {
                 // Call the Grapple method from the Grappling Gun script
-                grapplingGun.Grapple();
+                //grapplingGun.Grapple();
                 
                 // Set isGrappling to true
                 isGrappling = true;

@@ -794,6 +794,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: e03580f1dc1ab0c409c0bd018ef93d64, type: 2}
+    - target: {fileID: 5978437460790192584, guid: 2ed744cfcb6519d46b02bcb2880f04e8, type: 3}
+      propertyPath: grapplingGun
+      value: 
+      objectReference: {fileID: 382042100}
     - target: {fileID: 7568667837595594916, guid: 2ed744cfcb6519d46b02bcb2880f04e8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -835,6 +839,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7789120446080145049, guid: 2ed744cfcb6519d46b02bcb2880f04e8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7789120446080145049, guid: 2ed744cfcb6519d46b02bcb2880f04e8, type: 3}
       propertyPath: m_Distance
       value: 3.5
       objectReference: {fileID: 0}
@@ -850,7 +858,8 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 1235416217}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1965596712036393068, guid: 2ed744cfcb6519d46b02bcb2880f04e8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -908,7 +917,7 @@ MonoBehaviour:
   gunPivot: {fileID: 382042095}
   firePoint: {fileID: 382042096}
   rb: {fileID: 382042098}
-  launchSpeed: 1
+  launchSpeed: 2000
   grapplePoint: {x: 0, y: 0}
   grappleDistanceVector: {x: 0, y: 0}
 --- !u!1 &382865108

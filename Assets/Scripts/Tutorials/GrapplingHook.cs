@@ -8,6 +8,9 @@ public class GrapplingHook : MonoBehaviour
     public Tutorial_GrapplingRope grappleRope;
     public GameController gameController;
 
+
+    public RaycastHit2D hit;
+
     [Header("Main Camera:")]
     public Camera m_camera;
 
@@ -15,10 +18,14 @@ public class GrapplingHook : MonoBehaviour
     public Transform playerPosition;
     public Transform gunPivot;
     public Transform firePoint;
-    public RaycastHit2D hit;
 
     [Header("Physics Ref:")]
+    public SpringJoint2D springJoint2D;
     public Rigidbody2D rb;
+
+    //[Header("Rotation:")]
+    //[SerializeField] private bool rotateOverTime = true;
+    //[Range(0, 60)] [SerializeField] private float rotationSpeed = 4;
 
     //[Header("Distance:")]
     //[SerializeField] private bool hasMaxDistance = false;
@@ -32,7 +39,7 @@ public class GrapplingHook : MonoBehaviour
     [Header("Launching:")]
     //[SerializeField] private bool launchToPoint = true;
     [SerializeField] private float launchSpeed = 1;
-    private WhetherToLaunch whetherToLaunch;
+    private WhetherToLaunch whetherToLaunch = WhetherToLaunch.Launch;
 
     [Header("No Launch To Point")]
     //[SerializeField] private bool autoConfigureDistance = false;
@@ -105,6 +112,21 @@ public class GrapplingHook : MonoBehaviour
             Debug.DrawLine(firePoint.position, hit.point, Color.green);
         }
         
+        if (grappleRope.isGrappling)
+        {
+            switch (whetherToLaunch)
+            {
+                case WhetherToLaunch.Launch:
+                    Debug.Log("WhetherToLaunch = Launch");
+                    rb.AddForce((grapplePoint - (Vector2)playerPosition.position).normalized * launchSpeed * slowEffect);
+                    break;
+
+                case WhetherToLaunch.No_Launch:
+
+                    break;
+
+            }
+        }
         
     }
     private void SetGrapplePoint()
@@ -125,20 +147,23 @@ public class GrapplingHook : MonoBehaviour
         gunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-    private void Grapple()
-    {
-        switch (whetherToLaunch)
-        {
-            case WhetherToLaunch.Launch:
-                rb.AddForce((grapplePoint - (Vector2)playerPosition.position).normalized * launchSpeed * slowEffect);
-                break;
+    //public void Grapple()
+    //{
+    //    Debug.Log("Grapple called");
+        
+    //    switch (whetherToLaunch)
+    //    {
+    //        case WhetherToLaunch.Launch:
+    //            Debug.Log("WhetherToLaunch = Launch");
+    //            rb.AddForce((grapplePoint - (Vector2)playerPosition.position).normalized * launchSpeed * slowEffect);
+    //            break;
 
-            case WhetherToLaunch.No_Launch:
+    //        case WhetherToLaunch.No_Launch:
 
-                break;
+    //            break;
 
-        }
-    }
+    //    }
+    //}
 
     private void OnDrawGizmosSelected()
     {
