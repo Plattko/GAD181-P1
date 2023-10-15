@@ -55,16 +55,7 @@ public class GrapplingHook : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (!grappleRope.enabled)
-        {
-            grappleIndicator.transform.position = hit.point;
-        }
-        else
-        {
-            grappleIndicator.transform.position = grapplePoint;
-        }
-        
+    {        
         if (gameController.gamePlaying)
         {
             // If the left or right mouse button is pressed, call the SetGrapplePoint method
