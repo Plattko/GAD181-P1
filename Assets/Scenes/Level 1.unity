@@ -986,11 +986,7 @@ MonoBehaviour:
   grappleIndicator: {fileID: 0}
   springJoint2D: {fileID: 1725176708}
   rb: {fileID: 382042098}
-  launchToPoint: 1
   launchSpeed: 1
-  autoConfigureDistance: 0
-  targetDistance: 3
-  targetFrequncy: 1
   grapplePoint: {x: 0, y: 0}
   grappleDistanceVector: {x: 0, y: 0}
 --- !u!114 &382042104
@@ -1706,7 +1702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2618290988619615141, guid: 90decaf5a05e5594fbc340c61a6907cf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3717283866360179941, guid: 90decaf5a05e5594fbc340c61a6907cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2802,7 +2798,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235416214}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 110138136d6386d45a3aeb9345907d03, type: 3}
   m_Name: 
