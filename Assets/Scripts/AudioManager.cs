@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour
     //public GameObject audioSettingsUI;
     //private bool settingsOpen = false;
 
+   
+
     private void Start()
     {
         musicSource.clip = background;

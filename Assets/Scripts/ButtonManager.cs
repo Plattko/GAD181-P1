@@ -8,11 +8,16 @@ public class ButtonManager : MonoBehaviour
 {
     // The name of the next level to load
     public string nextLevel;
+    public string levelSelectScene;
 
     public void LoadNextLevel()
     {
         // Load the specified level
         SceneManager.LoadScene(nextLevel);
+    }
+    public void LoadLevelSelectScene()
+    {
+        SceneManager.LoadScene(levelSelectScene);
     }
 
     public void RetryLevel()
