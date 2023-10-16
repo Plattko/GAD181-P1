@@ -9,8 +9,8 @@ public class GrapplingHook : MonoBehaviour
     public GameController gameController;
 
 
-    public RaycastHit2D hit;
-
+    private RaycastHit2D hit;
+    private int layerMask = 1 << 6;
 
     [Header("Main Camera:")]
     public Camera m_camera;
@@ -183,15 +183,14 @@ public class GrapplingHook : MonoBehaviour
 
     private void FixedUpdate()
     {
-        int layerMask = 1 << 6;
         Vector2 direction = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
 
         // Shoot raycast that only detects surfaces
-        hit = Physics2D.Raycast(firePoint.position, direction.normalized, 50f, layerMask);
+        hit = Physics2D.Raycast(playerPosition.position, direction.normalized, 50f, layerMask);
 
         if (hit.collider != null)
         {
-            Debug.DrawLine(firePoint.position, hit.point, Color.green);
+            Debug.DrawLine(playerPosition.position, hit.point, Color.green);
         }
 
         //if (grappleRope.isGrappling)
