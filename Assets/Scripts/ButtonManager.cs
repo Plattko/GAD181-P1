@@ -9,6 +9,7 @@ public class ButtonManager : MonoBehaviour
     // The name of the next level to load
     public string nextLevel;
     public string levelSelectScene;
+    public string startScreen;
 
     public void LoadNextLevel()
     {
@@ -28,7 +29,7 @@ public class ButtonManager : MonoBehaviour
 
     public void QuitGame()
     {
-        // Quit the game
-        Application.Quit();
+        // Quit to menu
+        SceneManager.LoadScene(startScreen);
     }
 }
