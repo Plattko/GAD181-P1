@@ -8,10 +8,6 @@ public class GrapplingHook : MonoBehaviour
     public Tutorial_GrapplingRope grappleRope;
     public GameController gameController;
 
-
-    private RaycastHit2D hit;
-    private int layerMask = 1 << 6;
-
     [Header("Main Camera:")]
     public Camera m_camera;
 
@@ -25,30 +21,19 @@ public class GrapplingHook : MonoBehaviour
     public SpringJoint2D springJoint2D;
     public Rigidbody2D rb;
 
-    //private enum WhetherToLaunch
-    //{
-    //    Launch,
-    //    No_Launch
-    //}
-
     [Header("Launching:")]
-    [SerializeField] private bool launchToPoint = true;
-    //[SerializeField] private WhetherToLaunch whetherToLaunch = WhetherToLaunch.Launch;
     [SerializeField] private float launchSpeed = 1;
-
-    [Header("No Launch To Point")]
-    [SerializeField] private bool autoConfigureDistance = false;
-    [SerializeField] private float targetDistance = 3;
-    [SerializeField] private float targetFrequncy = 1;
 
     [HideInInspector] public Vector2 grapplePoint;
     [HideInInspector] public Vector2 grappleDistanceVector;
 
-    private float slowEffect = 1;
+    private RaycastHit2D hit;
+    private int layerMask = 1 << 6;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Disable the Grapple Rope script and the SpringJoint2D
         grappleRope.enabled = false;
         springJoint2D.enabled = false;
     }
@@ -58,13 +43,13 @@ public class GrapplingHook : MonoBehaviour
     {        
         if (gameController.gamePlaying)
         {
-            // If the left or right mouse button is pressed, call the SetGrapplePoint method
-            if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1))
+            // If the left mouse button is pressed, call the SetGrapplePoint method
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 SetGrapplePoint();
             }
-            // If the left or right mouse button is held, do the following
-            else if (Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
+            // If the left mouse button is held, rotate the grappling gun in the direction of the grapple point
+            else if (Input.GetKey(KeyCode.Mouse0))
             {
                 if (grappleRope.enabled)
                 {
@@ -76,13 +61,13 @@ public class GrapplingHook : MonoBehaviour
                     RotateGun(mousePos);
                 }
             }
-            // If the left or right mouse button is released, disable the GrappleRope script
-            else if (Input.GetKeyUp(KeyCode.Mouse0) || Input.GetKeyUp(KeyCode.Mouse1))
+            // If the left or mouse button is released, disable the Grapple Rope script and the SpringJoint2D
+            else if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 grappleRope.enabled = false;
                 springJoint2D.enabled = false;
             }
-            // If the player is not pressing anything, rotate the grappling gun towards the mouse's position
+            // If the player is not pressing anything, rotate the grappling gun following the mouse's position
             else
             {
                 Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
@@ -131,83 +116,25 @@ public class GrapplingHook : MonoBehaviour
             // Enable the spring joint
             springJoint2D.enabled = true;
         }
-        else if (Input.GetKey(KeyCode.Mouse1))
-        {
-            //Set the connected anchor to the grapple point
-            springJoint2D.connectedAnchor = grapplePoint;
-            // Calculate the distance vector of the fire point and the player's position
-            Vector2 distanceVector = grapplePoint - (Vector2)playerPosition.position;
-            // Set the distance of the spring joint to the magnitude of the distance vector
-            springJoint2D.autoConfigureDistance = true;
-            // Set the frequency to launch speed
-            springJoint2D.frequency = 0;
-            // Enable the spring joint
-            springJoint2D.enabled = true;
-        }
-
-        //switch (whetherToLaunch)
-        //{
-        //    case WhetherToLaunch.Launch:
-
-            //        Debug.Log("WhetherToLaunch = Launch");
-
-            //        // Set the connected anchor to the grapple point
-            //        springJoint2D.connectedAnchor = grapplePoint;
-            //        // Calculate the distance vector of the fire point and the player's position
-            //        Vector2 distanceVector = firePoint.position - playerPosition.position;
-            //        // Set the distance of the spring joint to the magnitude of the distance vector
-            //        springJoint2D.distance = distanceVector.magnitude;
-            //        // Set the frequency to launch speed
-            //        springJoint2D.frequency = launchSpeed;
-            //        // Enable the spring joint
-            //        springJoint2D.enabled = true;
-
-
-            //        //rb.AddForce((grapplePoint - (Vector2)playerPosition.position).normalized * launchSpeed * slowEffect);
-
-            //        break;
-
-            //    case WhetherToLaunch.No_Launch:
-
-            //        Debug.Log("WhetherToLaunch = No Launch");
-
-            //        break;
-
-            //}
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(hit.point, 1f);
     }
 
     private void FixedUpdate()
     {
+        // Get the direction for the raycast
         Vector2 direction = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
-
         // Shoot raycast that only detects surfaces
         hit = Physics2D.Raycast(playerPosition.position, direction.normalized, 50f, layerMask);
 
         if (hit.collider != null)
         {
+            // Draw a line representing the raycast in the editor
             Debug.DrawLine(playerPosition.position, hit.point, Color.green);
         }
+    }
 
-        //if (grappleRope.isGrappling)
-        //{
-        //    switch (whetherToLaunch)
-        //    {
-        //        case WhetherToLaunch.Launch:
-        //            Debug.Log("WhetherToLaunch = Launch");
-        //            rb.AddForce((grapplePoint - (Vector2)playerPosition.position).normalized * launchSpeed * slowEffect);
-        //            break;
-
-        //        case WhetherToLaunch.No_Launch:
-
-        //            break;
-
-        //    }
-        //}
-
+    private void OnDrawGizmosSelected()
+    {
+        // Draw a circle around the hit's position in the editor
+        Gizmos.DrawWireSphere(hit.point, 1f);
     }
 }
