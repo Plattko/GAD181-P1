@@ -28,16 +28,12 @@ public class PlayerFriction : MonoBehaviour
         // If the player is sliding along a surface and not grappling, slowly reduce their speed based on the surface type
         if (onSurface && !spring.enabled)
         {
-            // Get the surface friction from the surface [[CURRENTLY PLACEHOLDER]]
-            surfaceFriction = 0.9f;
-
             // Multiple the player's velocity by the surface's 'friction'
             rb.velocity = rb.velocity * surfaceFriction;
-
         }
         else
         {
-            surfaceFriction = noFriction;
+            rb.velocity = rb.velocity * noFriction;
         }
     }
 
@@ -46,6 +42,8 @@ public class PlayerFriction : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Surface"))
         {
+            Debug.Log("Player is not on a surface");
+
             // Set onSurface to true
             onSurface = true;
 

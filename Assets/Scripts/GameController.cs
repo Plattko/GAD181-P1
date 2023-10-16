@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
         //    lastMenu.SetActive(true);
         //}
 
-        if (Input.GetKeyDown(KeyCode.Escape) && gameIsPausable)
+        if (Input.GetKeyDown(KeyCode.Tab) && gameIsPausable)
         {
             PauseMenu();
         }

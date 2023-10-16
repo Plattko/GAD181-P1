@@ -15,7 +15,6 @@ public class GrapplingHook : MonoBehaviour
     public Transform playerPosition;
     public Transform gunPivot;
     public Transform firePoint;
-    public Transform grappleIndicator;
 
     [Header("Physics Ref:")]
     public SpringJoint2D springJoint2D;

@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     // Length of the level timer
     private float levelTimer = 10.0f;
+    // The starting time of the timer
+    private float startingTime = 10.0f;
     // Whether the timer is running
     private bool timerRunning = true;
     
     // Reference to the timer text
     public TextMeshProUGUI timerText;
+    // Reference to radial timer
+    public Image radialTimer;
     // Reference to the Game Controller script
     public GameController gameController;
 
@@ -34,6 +39,8 @@ public class Timer : MonoBehaviour
         {
             // Reduce the timer
             levelTimer -= Time.deltaTime;
+            // Reduce fill of the radial timer
+            radialTimer.fillAmount = levelTimer / startingTime;
         }
         else
         {
