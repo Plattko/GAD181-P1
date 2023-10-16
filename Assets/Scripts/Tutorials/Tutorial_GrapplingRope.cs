@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tutorial_GrapplingRope : MonoBehaviour
 {
     [Header("General Refernces:")]
-    public Tutorial_GrapplingGun grapplingGun;
+    public GrapplingHook grapplingGun;
     public LineRenderer m_lineRenderer;
 
     [Header("General Settings:")]
