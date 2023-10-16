@@ -2,44 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tutorial_GrapplingRope : MonoBehaviour
+public class GrapplingRope : MonoBehaviour
 {
     [Header("General References:")]
-    public Tutorial_GrapplingGun grapplingGun;
+    public GrapplingHook grapplingGun;
     public LineRenderer m_lineRenderer;
 
     [Header("General Settings:")]
     [SerializeField] private int precision = 40;
-    [Range(0, 20)] [SerializeField] private float straightenLineSpeed = 5;
-
-    [Header("Rope Animation Settings:")]
-    public AnimationCurve ropeAnimationCurve;
-    [Range(0.01f, 4)] [SerializeField] private float StartWaveSize = 2;
-    float waveSize = 0;
 
     [Header("Rope Progression:")]
     public AnimationCurve ropeProgressionCurve;
-    [SerializeField] [Range(1, 50)] private float ropeProgressionSpeed = 1;
+    [SerializeField] [Range(1, 50)] private float ropeProgressionSpeed = 6.7f;
 
-    float moveTime = 0;
+    private float moveTime = 0;
 
+    private bool ropeAtGrapplePoint = true;
+    
     // Whether the player is grappling
     [HideInInspector] public bool isGrappling = true;
 
-    bool straightLine = true;
-
-
-    private void OnEnable()
+    private void OnEnable() 
     {
+        // Set the move time to zero
         moveTime = 0;
         // Set the number of points in the line renderer to precision
         m_lineRenderer.positionCount = precision;
-        // Set the wave size to the start wave size
-        waveSize = StartWaveSize;
-        // Set whether the line is straight to false
-        straightLine = false;
+        // Set whether the rope has reached the grapple point is straight to false
+        ropeAtGrapplePoint = false;
 
-        // Call the LinePointstoFirePoint method
+        // Call the LinePointsToFirePoint method
         LinePointsToFirePoint();
 
         // Enable the line renderer
@@ -55,7 +47,7 @@ public class Tutorial_GrapplingRope : MonoBehaviour
         isGrappling = false;
     }
 
-    // Set the location of every point in the line to the fire point
+    // Set the position of every point in the line to the fire point
     private void LinePointsToFirePoint()
     {
         for (int i = 0; i < precision; i++)
@@ -64,27 +56,28 @@ public class Tutorial_GrapplingRope : MonoBehaviour
         }
     }
 
+    // Increase the move time with delta time
     private void Update()
     {
         moveTime += Time.deltaTime;
         DrawRope();
     }
 
-
     void DrawRope()
     {
-        if (!straightLine)
+        if (!ropeAtGrapplePoint)
         {
-            // If the last point in the line renderer reaches the grapple point, start making the line straight
-            if (m_lineRenderer.GetPosition(precision - 1).x == grapplingGun.grapplePoint.x)
+            // If the last point in the line renderer hasn't reached the grapple point, call the RopeToGrapplePoint method
+            if (m_lineRenderer.GetPosition(precision - 1).x != grapplingGun.grapplePoint.x)
             {
-                // Set straighLine to true
-                straightLine = true;
+                // Call the RopeToGrapplePoint method
+                RopeToGrapplePoint();
             }
-            // Otherwise, call the DrawRopeWaves method
-            else
+            // Otherwise, if the last point in the line renderer reaches the grapple point, set ropeAtGrapplePoint to true
+            else if (m_lineRenderer.GetPosition(precision - 1).x == grapplingGun.grapplePoint.x)
             {
-                DrawRopeWaves();
+                // Set ropeAtGrapplePoint to true
+                ropeAtGrapplePoint = true;
             }
         }
         else
@@ -94,50 +87,40 @@ public class Tutorial_GrapplingRope : MonoBehaviour
             {
                 // Call the Grapple method from the Grappling Gun script
                 grapplingGun.Grapple();
-                
+
                 // Set isGrappling to true
                 isGrappling = true;
             }
-            if (waveSize > 0)
-            {
-                // Gradually reduce the size of the waves while it is still above 0
-                waveSize -= Time.deltaTime * straightenLineSpeed;
-                DrawRopeWaves();
-            }
-            else
-            {
-                // Set the wave size to 0
-                waveSize = 0;
 
-                // If the amount of points in the line is not 2, make it 2 for better performance
-                if (m_lineRenderer.positionCount != 2) 
-                {
-                    m_lineRenderer.positionCount = 2; 
-                }
-
-                // Call the DrawRopeNoWaves method
-                DrawRopeNoWaves();
+            // Reduce the number of points in the line to 2 if above 2
+            if (m_lineRenderer.positionCount != 2)
+            {
+                m_lineRenderer.positionCount = 2;
             }
+            
+            // Call the RopeConnected method
+            RopeConnected();
         }
     }
 
-    // !!! COME BACK TO THIS !!!
-    void DrawRopeWaves()
+    // Lerp each point of the grappling rope towards the grapple point
+    void RopeToGrapplePoint()
     {
         // Iterate through every point on the line renderer
         for (int i = 0; i < precision; i++)
         {
             float delta = (float)i / ((float)precision - 1f);
-            Vector2 offset = Vector2.Perpendicular(grapplingGun.grappleDistanceVector).normalized * ropeAnimationCurve.Evaluate(delta) * waveSize;
-            Vector2 targetPosition = Vector2.Lerp(grapplingGun.firePoint.position, grapplingGun.grapplePoint, delta) + offset;
+            
+            Vector2 targetPosition = Vector2.Lerp(grapplingGun.firePoint.position, grapplingGun.grapplePoint, delta);
             Vector2 currentPosition = Vector2.Lerp(grapplingGun.firePoint.position, targetPosition, ropeProgressionCurve.Evaluate(moveTime) * ropeProgressionSpeed);
 
+            // Update the position of each point to the correct position
             m_lineRenderer.SetPosition(i, currentPosition);
         }
     }
 
     // Set the last point in the line to the grapple point and the first point in the line to the fire point
-    void DrawRopeNoWaves()
+    void RopeConnected()
     {
         m_lineRenderer.SetPosition(0, grapplingGun.firePoint.position);
         m_lineRenderer.SetPosition(1, grapplingGun.grapplePoint);

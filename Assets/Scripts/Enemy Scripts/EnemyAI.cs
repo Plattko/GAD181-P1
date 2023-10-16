@@ -17,8 +17,9 @@ public class EnemyAI : MonoBehaviour
     private Path path;
     // Int storing the current waypoint along the path the enemy is following
     private int currentWaypoint = 0;
+    
     // Whether the enemy has reached the end of the path
-    private bool reachedEndOfPath = false;
+    //private bool reachedEndOfPath = false;
 
     // Reference to the enemy's Seeker script
     private Seeker seeker;
@@ -47,15 +48,15 @@ public class EnemyAI : MonoBehaviour
         }
 
         // If the enemy has reached the end of the path, stop moving
-        if (currentWaypoint >= path.vectorPath.Count)
-        {
-            reachedEndOfPath = true;
-            return;
-        }
-        else
-        {
-            reachedEndOfPath = false;
-        }
+        //if (currentWaypoint >= path.vectorPath.Count)
+        //{
+        //    reachedEndOfPath = true;
+        //    return;
+        //}
+        //else
+        //{
+        //    reachedEndOfPath = false;
+        //}
 
         // Get the direction of the next waypoint along the path
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;

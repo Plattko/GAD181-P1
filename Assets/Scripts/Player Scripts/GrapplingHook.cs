@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrapplingHook : MonoBehaviour
 {
     [Header("Scripts Ref:")]
-    public Tutorial_GrapplingRope grappleRope;
+    public GrapplingRope grappleRope;
     public GameController gameController;
 
     [Header("Main Camera:")]
