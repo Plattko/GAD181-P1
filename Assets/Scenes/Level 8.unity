@@ -1643,7 +1643,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next Level
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7be0a791b560e5344bf48c51efaf5d91, type: 2}
   m_sharedMaterial: {fileID: 6237326369620062634, guid: 7be0a791b560e5344bf48c51efaf5d91, type: 2}
@@ -7586,7 +7586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15494b56951477048bd6d68596f77aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: Level 8
+  nextLevel: StartScreen
   levelSelectScene: 
   startScreen: StartScreen
 --- !u!4 &1075547764
@@ -9466,7 +9466,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -52.000015}
+  m_AnchoredPosition: {x: 0, y: -112}
   m_SizeDelta: {x: 270.45, y: 64.159}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1721815922
@@ -10611,7 +10611,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: 0}
+  m_AnchoredPosition: {x: -200, y: 56}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2052368842
@@ -10634,11 +10634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You Survived!
-
-
-
-'
+  m_text: "You Won! \nThank you for playing our playtest :)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7be0a791b560e5344bf48c51efaf5d91, type: 2}
   m_sharedMaterial: {fileID: 6237326369620062634, guid: 7be0a791b560e5344bf48c51efaf5d91, type: 2}

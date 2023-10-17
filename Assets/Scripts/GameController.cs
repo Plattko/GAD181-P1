@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
     //private GameObject lastMenu;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Get the player's current scene
         currentScene = SceneManager.GetActiveScene();

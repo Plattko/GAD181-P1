@@ -106,7 +106,7 @@ MonoBehaviour:
   firePoint: {fileID: 5185016777613697115}
   springJoint2D: {fileID: 7789120446080145049}
   rb: {fileID: 5565153661271769832}
-  launchSpeed: 0.9
+  launchSpeed: 1
   grapplePoint: {x: 0, y: 0}
   grappleDistanceVector: {x: 0, y: 0}
 --- !u!1 &4912038574083400524
